@@ -25,11 +25,13 @@ generateBtn.addEventListener("click", writePassword);
 
 //ASSIGNMENT CODE
 function promptOptions() {
-  var characterLength = prompt("How many characters would you like in your password between 8 - 128?");
-  if (characterLength < 8 || characterLength > 128) {
+  //user enters a number between 8-128
+  var characterLength = Number(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
+  while (characterLength < 8 || characterLength > 128) {
     alert("You need to enter a number between 8 and 128. Please try again.");
   }
  
+  //user decides if they would like to include lowercase
   var useLower = confirm("Would you like lowercase letters in your password?");
   if (useLower) {
     alert("You've selected to use lowercase letters in your password.");
@@ -37,6 +39,7 @@ function promptOptions() {
     alert("You have selected NOT to use lowercase letters in your password.");
   }
 
+  //user decides if they would like to include uppercase
   var useUpper = confirm("Would you like uppercase letters in your password?");
   if (useUpper) {
     alert("You've selected to use uppercase letters in your password.");
@@ -44,6 +47,7 @@ function promptOptions() {
     alert("You have selected NOT to use uppercase letters in your password.");
   }
 
+  //user decides if they would like to include special values
   var useSpecial = confirm("Would you like special characters in your password?");
   if (useSpecial) {
     alert("You've selected to use special characters in your password.");
@@ -51,6 +55,7 @@ function promptOptions() {
     alert("You have selected NOT to use special characters in your password");
   }
 
+  //user decides if they would like to include numbers
   var useNumbers = confirm("Would you like numbers in your password?");
   if (useNumbers) {
     alert("You've selected to use numbers in your password");
@@ -60,6 +65,10 @@ function promptOptions() {
   
 }
 
+//call prompts
+promptOptions();
+
+//actually generate password based on inputs
 function generatePassword() {
   var password = "";
   for (var i = 0; i < characterLength; i++) {
@@ -67,3 +76,6 @@ function generatePassword() {
     password = password + choiceArray[randomCharacters];
   }
 }
+
+//call password creation
+generatePassword();
