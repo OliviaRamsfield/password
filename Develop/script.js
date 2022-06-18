@@ -10,6 +10,8 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 // ASSIGNMENT CODE ABOVE
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
@@ -20,21 +22,19 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 //ASSIGNMENT CODE
-function promptOptions() {
+function passwordLength() {
   choiceArray = [];
   //user enters a number between 8-128
-  var characterLength = Number(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
+  var characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
   while (characterLength < 8 || characterLength > 128) {
     alert("You need to enter a number between 8 and 128. Please try again.");
-    var characterLength = Number(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
+    var characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
   } 
   console.log(characterLength);
+}
 
- 
+ function promptOptions() {
   //user decides if they would like to include lowercase
   var useLower = confirm("Would you like lowercase letters in your password?");
   if (useLower) {
@@ -77,6 +77,9 @@ function promptOptions() {
 
 }
 
+//call password length
+passwordLength();
+
 //call prompts
 promptOptions();
 
@@ -84,11 +87,14 @@ promptOptions();
 function generatePassword() {
   var password = "";
   for (var i = 0; i < characterLength; i++) {
-    var randomCharacters = Math.floor(Math.random() * characterLength.length);
-    password = password + choiceArray[randomCharacters];
+    var randomIndex = Math.floor(Math.random() * choiceArray.length);
+    var randomCharacters = choiceArray[randomIndex];
+    var password = password + randomCharacters;
   }
+  return password;
 }
 console.log(choiceArray);
+// console.log(randomCharacters);
 
 //call password creation
 generatePassword();
