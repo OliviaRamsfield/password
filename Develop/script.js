@@ -1,4 +1,4 @@
-var characterLength = 8;
+var characterLength = undefined;
 var choiceArray = [];
 
 //Arrays
@@ -26,10 +26,10 @@ function writePassword() {
 function passwordLength() {
   choiceArray = [];
   //user enters a number between 8-128
-  var characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
+  characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
   while (characterLength < 8 || characterLength > 128) {
     alert("You need to enter a number between 8 and 128. Please try again.");
-    var characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
+    characterLength = parseInt(window.prompt("How many characters would you like in your password between 8 - 128?", ""));
   } 
   console.log(characterLength);
 }
@@ -89,12 +89,9 @@ function generatePassword() {
   for (var i = 0; i < characterLength; i++) {
     var randomIndex = Math.floor(Math.random() * choiceArray.length);
     var randomCharacters = choiceArray[randomIndex];
-    var password = password + randomCharacters;
+    password = password + randomCharacters;
   }
   return password;
 }
 console.log(choiceArray);
 // console.log(randomCharacters);
-
-//call password creation
-generatePassword();
