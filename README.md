@@ -16,7 +16,7 @@ A website that creates unique passwords based on criteria selected by the user.
 
 ## Website
 
-https://oliviaramsfield.github.io/password/
+https://oliviaramsfield.github.io/random-password-generator-javascript/
 
 ## Contribution
 
