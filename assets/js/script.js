@@ -1,26 +1,12 @@
 var characterLength = undefined;
 var choiceArray = [];
 
-//Arrays
+//arrays for all possible password character options
 const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 const specialCharacter = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
-// ASSIGNMENT CODE ABOVE
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 //ASSIGNMENT CODE
 function passwordLength() {
@@ -55,7 +41,7 @@ function passwordLength() {
   }
   console.log("uppercase = " + useUpper);
 
-  //user decides if they would like to include special values
+ //user decides if they would like to include special values
   var useSpecial = confirm("Would you like special characters in your password?");
   if (useSpecial) {
     alert("You've selected to use special characters in your password.");
@@ -77,14 +63,13 @@ function passwordLength() {
 
 }
 
-//call password length
-passwordLength();
+//generate password based on user input
+function generatePassword() {
 
-//call prompts
+  //call functions to initiate prompts
+passwordLength();
 promptOptions();
 
-//actually generate password based on inputs
-function generatePassword() {
   var password = "";
   for (var i = 0; i < characterLength; i++) {
     var randomIndex = Math.floor(Math.random() * choiceArray.length);
@@ -94,4 +79,19 @@ function generatePassword() {
   return password;
 }
 console.log(choiceArray);
-// console.log(randomCharacters);
+
+// ASSIGNMENT CODE ABOVE
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
